@@ -1,0 +1,32 @@
+{% extends "teacher/main.html" %}
+{% block content %}
+    <div style="display:flex;flex-direction:column;">
+        <h3>{{ requests.project_title }}</h3>
+        <div>
+            <p>
+                {{ requests.project_description }}
+            </p>
+        </div>
+        <div>
+            by <h4> {{ requests.student_name }} </h4>
+            {{ requests.registration_number }}
+        </div>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <fieldset>
+                <legend> Approve project </legend>
+                <label>
+                    Accept
+                    <input type="radio" name="approval" value="True"/>
+                </label>
+                <label>
+                    Deny
+                    <input type="radio" name="approval" value="False"/>
+                </label>
+                <input type="submit" class="btn btn-primary" />
+            </fieldset>
+        </form>
+
+    </div>
+{% endblock content %}

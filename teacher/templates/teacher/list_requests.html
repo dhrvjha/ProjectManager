@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Regsitration Number</td>
+                        <td>Project Title</td>
+                        <td>Detail</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for request in requests %}
+                        <tr>
+                            <td>
+                                {{ request.student_name }}
+                            </td>
+                            <td>{{ request.registration_number }}</td>
+                            <td>{{ request.project_title }}</td>
+                            <td>
+                                <a href="{% url 'project_request_detail' request.project_uuid %}">
+                                    =>
+                                </a>
+                            </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </ul>
+</body>
+</html>
