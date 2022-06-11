@@ -1,0 +1,30 @@
+{% extends "student/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <fieldset class="form-group">
+            <legend class="broder-bottom mb-4"> Student </legend>
+        {{ studentform|crispy }}
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="broder-bottom mb-4"> Project </legend>
+        {{ projectform|crispy }}
+            </label>
+        </fieldset>
+        <fieldset class="form-group">
+            <legend class="broder-bottom mb-4"> Guide </legend>
+            <label class="form-label requiredField">
+            <select class="input-group" name="teacher" required>
+                    <option value="-1" selected disabled> Choose a guide </option>
+                {% for teacher in teachers %}
+                    <option value="{{ teacher.id }} "> {{ teacher }} </option>
+                {% endfor %}
+            </select>
+            </label>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock content %}

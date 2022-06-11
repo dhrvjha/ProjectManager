@@ -1,0 +1,16 @@
+{% extends "student/base.html" %}
+{% block content %}
+    {% if rejected %}
+        <h3> Your request has been rejected </h3>
+        <a href={% url 'student_apply' %}>Fill another request</a>
+    {% else %}
+    <h3>
+        {% if is_approved %}
+            Your request has been approved
+        {% else %}
+            Requested guide is yet to respond
+        {% endif %}
+    </h3>
+        You should contact your guide asap.
+    {% endif %}
+{% endblock content %}
